@@ -1,0 +1,11 @@
+class: User
+table: users
+fields:
+  name: String
+  email: String?
+  phone: int?
+  image: int?
+  pic: String?
+  last_seen: DateTime?
+  status: bool?
+  deleted: bool?

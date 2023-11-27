@@ -1,0 +1,13 @@
+class: Message
+table: message
+fields:
+  channel: String?
+  content: String
+  sender: int
+  sent_to: int?
+  sent_at: DateTime?
+  seen_at: DateTime?
+  seen_by: List<String>
+  group: bool?
+  deleted: bool?
+  replayto: int?
