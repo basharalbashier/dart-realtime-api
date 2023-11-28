@@ -1,3 +1,4 @@
+import 'package:faker/faker.dart';
 import 'package:serverpod/serverpod.dart';
 import 'package:test_server/src/web/routes/root.dart';
 // import 'package:socket_io/socket_io.dart' as IO;
@@ -9,27 +10,26 @@ import 'src/generated/endpoints.dart';
 // configuring Relic (Serverpod's web-server), or need custom setup work.
 
 void run(List<String> args) async {
-      final pod = Serverpod(
-        args,
-        Protocol(),
-        Endpoints(),
-      );
+  final pod = Serverpod(
+    args,
+    Protocol(),
+    Endpoints(),
+  );
+  // If you are using any future calls, they need to be registered here.
+  // pod.registerFutureCall(ExampleFutureCall(), 'exampleFutureCall');
 
-      // If you are using any future calls, they need to be registered here.
-      // pod.registerFutureCall(ExampleFutureCall(), 'exampleFutureCall');
+  // Setup a default page at the web root.
+  pod.webServer.addRoute(RouteRoot(), '/');
+  pod.webServer.addRoute(RouteRoot(), '/index.html');
+  // Serve all files in the /static directory.
+  // pod.webServer.addRoute(
+  //   RouteStaticDirectory(serverDirectory: 'static', basePath: '/'),
+  //   '/*',
+  // );
 
-      // Setup a default page at the web root.
-      pod.webServer.addRoute(RouteRoot(), '/');
-      pod.webServer.addRoute(RouteRoot(), '/index.html');
-      // Serve all files in the /static directory.
-      // pod.webServer.addRoute(
-      //   RouteStaticDirectory(serverDirectory: 'static', basePath: '/'),
-      //   '/*',
-      // );
+  // Start the server.
+  await pod.start();
 
-      // Start the server.
-      await pod.start();
-    }
-  
-  // Initialize Serverpod and connect it with your generated code.
+}
 
+// Initialize Serverpod and connect it with your generated code.

@@ -1,0 +1,7 @@
+class: Conversation
+table: conversation
+fields:
+  sender: int?
+  to: int?
+  private: bool
+  hash: String

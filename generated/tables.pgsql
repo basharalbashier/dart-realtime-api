@@ -1,4 +1,20 @@
 --
+-- Class Conversation as table conversation
+--
+
+CREATE TABLE "conversation" (
+  "id" serial,
+  "sender" integer,
+  "to" integer,
+  "private" boolean NOT NULL,
+  "hash" text NOT NULL
+);
+
+ALTER TABLE ONLY "conversation"
+  ADD CONSTRAINT conversation_pkey PRIMARY KEY (id);
+
+
+--
 -- Class Message as table message
 --
 

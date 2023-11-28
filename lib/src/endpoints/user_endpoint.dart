@@ -7,7 +7,10 @@ class UserEndPoint extends Endpoint {
 
     return user!;
   }
-
+Future<List<User>> getAllUsers(Session session)async{
+  List<User> users= await User.find(session);
+  return users;
+}
   Future<bool> store(Session session, User user) async {
     bool inserted = false;
     try {
