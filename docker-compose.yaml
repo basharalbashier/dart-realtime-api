@@ -7,9 +7,6 @@ services:
       - 8080:8080
     depends_on:
       - postgres
-    environment:
-      DATABASE_URL: postgres://postgres@CaZ1DiWXdh4PWJuuwdk6YjREXdcpjcgt/test
-      PORT: 5432
   postgres:
     image: postgres:14.1
     container_name: postgresFlutter
