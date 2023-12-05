@@ -1,0 +1,5 @@
+test_server/peer/node_modules
+test_server/peer/.pnpm-store
+test_server/peer/.vscode
+test_server/peer/dist
+peer

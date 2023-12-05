@@ -29,7 +29,7 @@ webServer:
 
 # This is the database setup for your server.
 database:
-  host: 172.18.0.2
+  host: 172.18.0.3
   port: 5432
   name: test
   user: postgres

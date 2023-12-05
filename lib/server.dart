@@ -1,7 +1,5 @@
-import 'package:faker/faker.dart';
 import 'package:serverpod/serverpod.dart';
 import 'package:test_server/src/web/routes/root.dart';
-// import 'package:socket_io/socket_io.dart' as IO;
 import 'src/generated/protocol.dart';
 import 'src/generated/endpoints.dart';
 
@@ -21,13 +19,7 @@ void run(List<String> args) async {
   // Setup a default page at the web root.
   pod.webServer.addRoute(RouteRoot(), '/');
   pod.webServer.addRoute(RouteRoot(), '/index.html');
-  // Serve all files in the /static directory.
-  // pod.webServer.addRoute(
-  //   RouteStaticDirectory(serverDirectory: 'static', basePath: '/'),
-  //   '/*',
-  // );
 
-  // Start the server.
   await pod.start();
 
 }
