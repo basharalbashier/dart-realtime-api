@@ -5,12 +5,21 @@ services:
     container_name: dartRealTimeApi
     ports:
       - 8080:8080
-      - 9000:9000
     depends_on:
       - postgres
+      - peer
     networks:
       chatNetwork:
-        ipv4_address: 172.18.0.3
+        ipv4_address: 172.18.0.2
+  peer:
+    image: peerjs/peerjs-server
+    container_name: peerjs
+    command: bash -c "peerjs --port 9000 --key peerjs --path /call"
+    ports:
+      - 9000:9000
+    networks:
+      chatNetwork:
+        ipv4_address: 172.18.0.4
   postgres:
     image: postgres:14.1
     container_name: postgresFlutter
@@ -24,7 +33,7 @@ services:
       - test_data:/var/lib/postgresql/data
     networks:
       chatNetwork:
-        ipv4_address: 172.18.0.2
+        ipv4_address: 172.18.0.3
 volumes:
   test_data:
 networks:
