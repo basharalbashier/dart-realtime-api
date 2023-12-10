@@ -2,7 +2,7 @@
 
 # Start docker
 echo "Starting docker"
-docker compose up --build --detach
+docker-compose up --build --detach
 
 if command -v netstat &> /dev/null
 then
@@ -21,7 +21,12 @@ sleep 2
 
 echo "Postgres is ready"
 
-docker compose run --rm postgres env PGPASSWORD="CaZ1DiWXdh4PWJuuwdk6YjREXdcpjcgt" psql -h postgres -U postgres -d test < generated/tables-serverpod.pgsql
+docker cp ./generated/tables-serverpod.pgsql postgresFlutter:/docker-entrypoint-initdb.d/tables-serverpod.pgsql && docker cp ./generated/tables.pgsql postgresFlutter:/docker-entrypoint-initdb.d/tables.pgsql 
+
+sleep 2
+
+docker exec -u postgres postgresFlutter  psql test postgres -f docker-entrypoint-initdb.d/tables-serverpod.pgsql && docker exec -u postgres postgresFlutter  psql test postgres -f docker-entrypoint-initdb.d/tables.pgsql
+
 
 echo "Stopping docker"
 docker compose stop

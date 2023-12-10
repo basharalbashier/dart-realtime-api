@@ -9,7 +9,6 @@ build/
 doc/api/
 
 # Passwords file
-config/passwords.yaml
 test_server/peer/node_modules
 test_server/peer/.pnpm-store
 test_server/peer/.vscode

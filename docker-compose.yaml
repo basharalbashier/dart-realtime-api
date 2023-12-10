@@ -11,29 +11,29 @@ services:
     networks:
       chatNetwork:
         ipv4_address: 172.18.0.2
-  peer:
-    image: peerjs/peerjs-server
-    container_name: peerjs
-    command: bash -c "peerjs --port 9000 --key peerjs --path /call"
-    ports:
-      - 9000:9000
-    networks:
-      chatNetwork:
-        ipv4_address: 172.18.0.4
   postgres:
     image: postgres:14.1
     container_name: postgresFlutter
-    ports:
-      - '8090:5432'
     environment:
       POSTGRES_USER: postgres
       POSTGRES_DB: test
       POSTGRES_PASSWORD: "CaZ1DiWXdh4PWJuuwdk6YjREXdcpjcgt"
     volumes:
       - test_data:/var/lib/postgresql/data
+    ports:
+      - 8090:5432
     networks:
       chatNetwork:
         ipv4_address: 172.18.0.3
+  peer:
+    image: peerjs/peerjs-server
+    container_name: peerjs
+    command: "peerjs --port 9000 --key peerjs --allow_discovery true"
+    ports:
+      - 9000:9000
+    networks:
+      chatNetwork:
+        ipv4_address: 172.18.0.4
 volumes:
   test_data:
 networks:

@@ -6,7 +6,8 @@ Future<Conversation?> getByHash(StreamingSession session, String hash) async =>
     await Conversation.findSingleRow(session,
             // ignore: invalid_return_type_for_catch_error
             where: (p0) => p0.hash.equals(hash))
-        .catchError((onError) => print(onError));
+        // ignore: invalid_return_type_for_catch_error
+        .catchError((onError) => print);
 
 Future<String> isConv(StreamingSession session) async {
   Conversation? wantedConversation;

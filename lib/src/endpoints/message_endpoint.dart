@@ -7,12 +7,9 @@ class MessageEndPoint extends Endpoint {
   @override
   Future<void> streamOpened(StreamingSession session) async {
     String channel = await isConv(session);
-    // print(channel);
-   
-
     session.messages
         .addListener(channel, (message) => sendStreamMessage(session, message));
-   List<Message> messages =
+    List<Message> messages =
         await Message.find(session, where: (p0) => p0.channel.equals(channel));
     for (Message mes in messages) {
       session.messages.postMessage(
@@ -39,14 +36,5 @@ class MessageEndPoint extends Endpoint {
         message,
       );
     }
-  }
-
-  User gen() {
-    User user = User(
-        name: faker.person.name(),
-        email: faker.internet.email(),
-        phone: faker.randomGenerator.integer(10));
-
-    return user;
   }
 }
