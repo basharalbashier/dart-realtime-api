@@ -15,22 +15,18 @@ Future<String> isConv(StreamingSession session) async {
   var id = format(session, "id");
 
   var to = format(session, "to");
-  wantedConversation = await getByHash(session, "${id}_$to");
 
+  wantedConversation = await getByHash(session, "${id}_$to");
   wantedConversation ??= await getByHash(session, "${to}_$id");
 
   if (wantedConversation == null) {
-    print("creaating");
     var newConversation = Conversation(
-      sender: int.parse(id),
-      to: int.parse(to),
       private: true /**change it if group */,
       hash: "${id}_$to",
     );
     await Conversation.insert(session, newConversation);
     wantedConversation = newConversation;
   }
-  // print(wantedConversation.toString() + "object 3");
 
   return wantedConversation.hash;
 }

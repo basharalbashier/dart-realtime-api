@@ -11,8 +11,6 @@ import 'package:serverpod/serverpod.dart' as _i1;
 class Conversation extends _i1.TableRow {
   Conversation({
     int? id,
-    this.sender,
-    this.to,
     required this.private,
     required this.hash,
   }) : super(id);
@@ -23,9 +21,6 @@ class Conversation extends _i1.TableRow {
   ) {
     return Conversation(
       id: serializationManager.deserialize<int?>(jsonSerialization['id']),
-      sender:
-          serializationManager.deserialize<int?>(jsonSerialization['sender']),
-      to: serializationManager.deserialize<int?>(jsonSerialization['to']),
       private:
           serializationManager.deserialize<bool>(jsonSerialization['private']),
       hash: serializationManager.deserialize<String>(jsonSerialization['hash']),
@@ -33,10 +28,6 @@ class Conversation extends _i1.TableRow {
   }
 
   static final t = ConversationTable();
-
-  int? sender;
-
-  int? to;
 
   bool private;
 
@@ -49,8 +40,6 @@ class Conversation extends _i1.TableRow {
   Map<String, dynamic> toJson() {
     return {
       'id': id,
-      'sender': sender,
-      'to': to,
       'private': private,
       'hash': hash,
     };
@@ -60,8 +49,6 @@ class Conversation extends _i1.TableRow {
   Map<String, dynamic> toJsonForDatabase() {
     return {
       'id': id,
-      'sender': sender,
-      'to': to,
       'private': private,
       'hash': hash,
     };
@@ -71,8 +58,6 @@ class Conversation extends _i1.TableRow {
   Map<String, dynamic> allToJson() {
     return {
       'id': id,
-      'sender': sender,
-      'to': to,
       'private': private,
       'hash': hash,
     };
@@ -86,12 +71,6 @@ class Conversation extends _i1.TableRow {
     switch (columnName) {
       case 'id':
         id = value;
-        return;
-      case 'sender':
-        sender = value;
-        return;
-      case 'to':
-        to = value;
         return;
       case 'private':
         private = value;
@@ -224,10 +203,6 @@ class ConversationTable extends _i1.Table {
   /// the id will be null.
   final id = _i1.ColumnInt('id');
 
-  final sender = _i1.ColumnInt('sender');
-
-  final to = _i1.ColumnInt('to');
-
   final private = _i1.ColumnBool('private');
 
   final hash = _i1.ColumnString('hash');
@@ -235,8 +210,6 @@ class ConversationTable extends _i1.Table {
   @override
   List<_i1.Column> get columns => [
         id,
-        sender,
-        to,
         private,
         hash,
       ];

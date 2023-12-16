@@ -116,8 +116,8 @@ class Endpoints extends _i1.EndpointDispatch {
             params['user'],
           ),
         ),
-        'setOnline': _i1.MethodConnector(
-          name: 'setOnline',
+        'update': _i1.MethodConnector(
+          name: 'update',
           params: {
             'user': _i1.ParameterDescription(
               name: 'user',
@@ -129,7 +129,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['userEndPoint'] as _i4.UserEndPoint).setOnline(
+              (endpoints['userEndPoint'] as _i4.UserEndPoint).update(
             session,
             params['user'],
           ),

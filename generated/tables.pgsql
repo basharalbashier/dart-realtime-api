@@ -4,8 +4,6 @@
 
 CREATE TABLE "conversation" (
   "id" serial,
-  "sender" integer,
-  "to" integer,
   "private" boolean NOT NULL,
   "hash" text NOT NULL
 );
@@ -22,8 +20,7 @@ CREATE TABLE "message" (
   "id" serial,
   "channel" text,
   "content" text NOT NULL,
-  "sender" integer NOT NULL,
-  "sent_to" integer,
+  "send_by" text,
   "sent_at" timestamp without time zone,
   "seen_at" timestamp without time zone,
   "seen_by" json NOT NULL,
@@ -42,11 +39,12 @@ ALTER TABLE ONLY "message"
 
 CREATE TABLE "users" (
   "id" serial,
+  "uid" text,
   "name" text NOT NULL,
   "email" text,
   "phone" integer,
   "image" integer,
-  "pic" text,
+  "photourl" text,
   "last_seen" timestamp without time zone,
   "status" boolean,
   "deleted" boolean

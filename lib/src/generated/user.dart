@@ -11,11 +11,12 @@ import 'package:serverpod/serverpod.dart' as _i1;
 class User extends _i1.TableRow {
   User({
     int? id,
+    this.uid,
     required this.name,
     this.email,
     this.phone,
     this.image,
-    this.pic,
+    this.photourl,
     this.last_seen,
     this.status,
     this.deleted,
@@ -27,12 +28,14 @@ class User extends _i1.TableRow {
   ) {
     return User(
       id: serializationManager.deserialize<int?>(jsonSerialization['id']),
+      uid: serializationManager.deserialize<String?>(jsonSerialization['uid']),
       name: serializationManager.deserialize<String>(jsonSerialization['name']),
       email:
           serializationManager.deserialize<String?>(jsonSerialization['email']),
       phone: serializationManager.deserialize<int?>(jsonSerialization['phone']),
       image: serializationManager.deserialize<int?>(jsonSerialization['image']),
-      pic: serializationManager.deserialize<String?>(jsonSerialization['pic']),
+      photourl: serializationManager
+          .deserialize<String?>(jsonSerialization['photourl']),
       last_seen: serializationManager
           .deserialize<DateTime?>(jsonSerialization['last_seen']),
       status:
@@ -44,6 +47,8 @@ class User extends _i1.TableRow {
 
   static final t = UserTable();
 
+  String? uid;
+
   String name;
 
   String? email;
@@ -52,7 +57,7 @@ class User extends _i1.TableRow {
 
   int? image;
 
-  String? pic;
+  String? photourl;
 
   DateTime? last_seen;
 
@@ -67,11 +72,12 @@ class User extends _i1.TableRow {
   Map<String, dynamic> toJson() {
     return {
       'id': id,
+      'uid': uid,
       'name': name,
       'email': email,
       'phone': phone,
       'image': image,
-      'pic': pic,
+      'photourl': photourl,
       'last_seen': last_seen,
       'status': status,
       'deleted': deleted,
@@ -82,11 +88,12 @@ class User extends _i1.TableRow {
   Map<String, dynamic> toJsonForDatabase() {
     return {
       'id': id,
+      'uid': uid,
       'name': name,
       'email': email,
       'phone': phone,
       'image': image,
-      'pic': pic,
+      'photourl': photourl,
       'last_seen': last_seen,
       'status': status,
       'deleted': deleted,
@@ -97,11 +104,12 @@ class User extends _i1.TableRow {
   Map<String, dynamic> allToJson() {
     return {
       'id': id,
+      'uid': uid,
       'name': name,
       'email': email,
       'phone': phone,
       'image': image,
-      'pic': pic,
+      'photourl': photourl,
       'last_seen': last_seen,
       'status': status,
       'deleted': deleted,
@@ -117,6 +125,9 @@ class User extends _i1.TableRow {
       case 'id':
         id = value;
         return;
+      case 'uid':
+        uid = value;
+        return;
       case 'name':
         name = value;
         return;
@@ -129,8 +140,8 @@ class User extends _i1.TableRow {
       case 'image':
         image = value;
         return;
-      case 'pic':
-        pic = value;
+      case 'photourl':
+        photourl = value;
         return;
       case 'last_seen':
         last_seen = value;
@@ -265,6 +276,8 @@ class UserTable extends _i1.Table {
   /// the id will be null.
   final id = _i1.ColumnInt('id');
 
+  final uid = _i1.ColumnString('uid');
+
   final name = _i1.ColumnString('name');
 
   final email = _i1.ColumnString('email');
@@ -273,7 +286,7 @@ class UserTable extends _i1.Table {
 
   final image = _i1.ColumnInt('image');
 
-  final pic = _i1.ColumnString('pic');
+  final photourl = _i1.ColumnString('photourl');
 
   final last_seen = _i1.ColumnDateTime('last_seen');
 
@@ -284,11 +297,12 @@ class UserTable extends _i1.Table {
   @override
   List<_i1.Column> get columns => [
         id,
+        uid,
         name,
         email,
         phone,
         image,
-        pic,
+        photourl,
         last_seen,
         status,
         deleted,

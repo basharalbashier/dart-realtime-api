@@ -39,18 +39,6 @@ class Protocol extends _i1.SerializationManagerServer {
           columnDefault: 'nextval(\'conversation_id_seq\'::regclass)',
         ),
         _i2.ColumnDefinition(
-          name: 'sender',
-          columnType: _i2.ColumnType.integer,
-          isNullable: true,
-          dartType: 'int?',
-        ),
-        _i2.ColumnDefinition(
-          name: 'to',
-          columnType: _i2.ColumnType.integer,
-          isNullable: true,
-          dartType: 'int?',
-        ),
-        _i2.ColumnDefinition(
           name: 'private',
           columnType: _i2.ColumnType.boolean,
           isNullable: false,
@@ -105,16 +93,10 @@ class Protocol extends _i1.SerializationManagerServer {
           dartType: 'String',
         ),
         _i2.ColumnDefinition(
-          name: 'sender',
-          columnType: _i2.ColumnType.integer,
-          isNullable: false,
-          dartType: 'int',
-        ),
-        _i2.ColumnDefinition(
-          name: 'sent_to',
-          columnType: _i2.ColumnType.integer,
+          name: 'send_by',
+          columnType: _i2.ColumnType.text,
           isNullable: true,
-          dartType: 'int?',
+          dartType: 'String?',
         ),
         _i2.ColumnDefinition(
           name: 'sent_at',
@@ -183,6 +165,12 @@ class Protocol extends _i1.SerializationManagerServer {
           columnDefault: 'nextval(\'users_id_seq\'::regclass)',
         ),
         _i2.ColumnDefinition(
+          name: 'uid',
+          columnType: _i2.ColumnType.text,
+          isNullable: true,
+          dartType: 'String?',
+        ),
+        _i2.ColumnDefinition(
           name: 'name',
           columnType: _i2.ColumnType.text,
           isNullable: false,
@@ -207,7 +195,7 @@ class Protocol extends _i1.SerializationManagerServer {
           dartType: 'int?',
         ),
         _i2.ColumnDefinition(
-          name: 'pic',
+          name: 'photourl',
           columnType: _i2.ColumnType.text,
           isNullable: true,
           dartType: 'String?',

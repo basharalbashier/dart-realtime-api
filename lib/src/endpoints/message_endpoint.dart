@@ -1,7 +1,7 @@
-import 'package:faker/faker.dart';
 import 'package:serverpod/serverpod.dart';
 import 'package:test_server/src/generated/protocol.dart';
 import 'package:test_server/src/helpers/check_create_conversation.dart';
+import 'package:test_server/src/helpers/format_param.dart';
 
 class MessageEndPoint extends Endpoint {
   @override
@@ -25,9 +25,7 @@ class MessageEndPoint extends Endpoint {
     SerializableEntity message,
   ) async {
     if (message is Message) {
-      print("inserting");
       String channel = await isConv(session);
-      print(channel);
       message.sent_at = DateTime.now();
       message.channel = channel;
       await Message.insert(session, message);

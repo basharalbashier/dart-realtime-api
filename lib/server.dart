@@ -13,15 +13,12 @@ void run(List<String> args) async {
     Protocol(),
     Endpoints(),
   );
-  // If you are using any future calls, they need to be registered here.
-  // pod.registerFutureCall(ExampleFutureCall(), 'exampleFutureCall');
 
   // Setup a default page at the web root.
   pod.webServer.addRoute(RouteRoot(), '/');
   pod.webServer.addRoute(RouteRoot(), '/index.html');
 
   await pod.start();
-
 }
 
 // Initialize Serverpod and connect it with your generated code.

@@ -3,8 +3,7 @@ table: message
 fields:
   channel: String?
   content: String
-  sender: int
-  sent_to: int?
+  send_by: String?
   sent_at: DateTime?
   seen_at: DateTime?
   seen_by: List<String>

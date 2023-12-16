@@ -13,8 +13,7 @@ class Message extends _i1.TableRow {
     int? id,
     this.channel,
     required this.content,
-    required this.sender,
-    this.sent_to,
+    this.send_by,
     this.sent_at,
     this.seen_at,
     required this.seen_by,
@@ -33,10 +32,8 @@ class Message extends _i1.TableRow {
           .deserialize<String?>(jsonSerialization['channel']),
       content: serializationManager
           .deserialize<String>(jsonSerialization['content']),
-      sender:
-          serializationManager.deserialize<int>(jsonSerialization['sender']),
-      sent_to:
-          serializationManager.deserialize<int?>(jsonSerialization['sent_to']),
+      send_by: serializationManager
+          .deserialize<String?>(jsonSerialization['send_by']),
       sent_at: serializationManager
           .deserialize<DateTime?>(jsonSerialization['sent_at']),
       seen_at: serializationManager
@@ -58,9 +55,7 @@ class Message extends _i1.TableRow {
 
   String content;
 
-  int sender;
-
-  int? sent_to;
+  String? send_by;
 
   DateTime? sent_at;
 
@@ -83,8 +78,7 @@ class Message extends _i1.TableRow {
       'id': id,
       'channel': channel,
       'content': content,
-      'sender': sender,
-      'sent_to': sent_to,
+      'send_by': send_by,
       'sent_at': sent_at,
       'seen_at': seen_at,
       'seen_by': seen_by,
@@ -100,8 +94,7 @@ class Message extends _i1.TableRow {
       'id': id,
       'channel': channel,
       'content': content,
-      'sender': sender,
-      'sent_to': sent_to,
+      'send_by': send_by,
       'sent_at': sent_at,
       'seen_at': seen_at,
       'seen_by': seen_by,
@@ -117,8 +110,7 @@ class Message extends _i1.TableRow {
       'id': id,
       'channel': channel,
       'content': content,
-      'sender': sender,
-      'sent_to': sent_to,
+      'send_by': send_by,
       'sent_at': sent_at,
       'seen_at': seen_at,
       'seen_by': seen_by,
@@ -143,11 +135,8 @@ class Message extends _i1.TableRow {
       case 'content':
         content = value;
         return;
-      case 'sender':
-        sender = value;
-        return;
-      case 'sent_to':
-        sent_to = value;
+      case 'send_by':
+        send_by = value;
         return;
       case 'sent_at':
         sent_at = value;
@@ -295,9 +284,7 @@ class MessageTable extends _i1.Table {
 
   final content = _i1.ColumnString('content');
 
-  final sender = _i1.ColumnInt('sender');
-
-  final sent_to = _i1.ColumnInt('sent_to');
+  final send_by = _i1.ColumnString('send_by');
 
   final sent_at = _i1.ColumnDateTime('sent_at');
 
@@ -316,8 +303,7 @@ class MessageTable extends _i1.Table {
         id,
         channel,
         content,
-        sender,
-        sent_to,
+        send_by,
         sent_at,
         seen_at,
         seen_by,

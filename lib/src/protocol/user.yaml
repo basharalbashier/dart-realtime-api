@@ -1,11 +1,12 @@
 class: User
 table: users
 fields:
+  uid: String?
   name: String
   email: String?
   phone: int?
   image: int?
-  pic: String?
+  photourl: String?
   last_seen: DateTime?
   status: bool?
   deleted: bool?

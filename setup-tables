@@ -23,7 +23,7 @@ echo "Postgres is ready"
 
 docker cp ./generated/tables-serverpod.pgsql postgresFlutter:/docker-entrypoint-initdb.d/tables-serverpod.pgsql && docker cp ./generated/tables.pgsql postgresFlutter:/docker-entrypoint-initdb.d/tables.pgsql 
 
-sleep 2
+sleep 5
 
 docker exec -u postgres postgresFlutter  psql test postgres -f docker-entrypoint-initdb.d/tables-serverpod.pgsql && docker exec -u postgres postgresFlutter  psql test postgres -f docker-entrypoint-initdb.d/tables.pgsql
 
