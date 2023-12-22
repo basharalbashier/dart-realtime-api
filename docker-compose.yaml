@@ -12,7 +12,7 @@ services:
       chatNetwork:
         ipv4_address: 172.18.0.2
   postgres:
-    image: postgres:14.1
+    image: postgres:latest
     container_name: postgresFlutter
     environment:
       POSTGRES_USER: postgres
