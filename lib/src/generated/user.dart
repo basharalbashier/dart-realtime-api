@@ -14,12 +14,8 @@ class User extends _i1.TableRow {
     this.uid,
     required this.name,
     this.email,
-    this.phone,
-    this.image,
-    this.photourl,
-    this.last_seen,
+    this.photoUrl,
     this.status,
-    this.deleted,
   }) : super(id);
 
   factory User.fromJson(
@@ -32,16 +28,10 @@ class User extends _i1.TableRow {
       name: serializationManager.deserialize<String>(jsonSerialization['name']),
       email:
           serializationManager.deserialize<String?>(jsonSerialization['email']),
-      phone: serializationManager.deserialize<int?>(jsonSerialization['phone']),
-      image: serializationManager.deserialize<int?>(jsonSerialization['image']),
-      photourl: serializationManager
-          .deserialize<String?>(jsonSerialization['photourl']),
-      last_seen: serializationManager
-          .deserialize<DateTime?>(jsonSerialization['last_seen']),
+      photoUrl: serializationManager
+          .deserialize<String?>(jsonSerialization['photoUrl']),
       status:
           serializationManager.deserialize<bool?>(jsonSerialization['status']),
-      deleted:
-          serializationManager.deserialize<bool?>(jsonSerialization['deleted']),
     );
   }
 
@@ -53,17 +43,9 @@ class User extends _i1.TableRow {
 
   String? email;
 
-  int? phone;
-
-  int? image;
-
-  String? photourl;
-
-  DateTime? last_seen;
+  String? photoUrl;
 
   bool? status;
-
-  bool? deleted;
 
   @override
   String get tableName => 'users';
@@ -75,12 +57,8 @@ class User extends _i1.TableRow {
       'uid': uid,
       'name': name,
       'email': email,
-      'phone': phone,
-      'image': image,
-      'photourl': photourl,
-      'last_seen': last_seen,
+      'photoUrl': photoUrl,
       'status': status,
-      'deleted': deleted,
     };
   }
 
@@ -91,12 +69,8 @@ class User extends _i1.TableRow {
       'uid': uid,
       'name': name,
       'email': email,
-      'phone': phone,
-      'image': image,
-      'photourl': photourl,
-      'last_seen': last_seen,
+      'photoUrl': photoUrl,
       'status': status,
-      'deleted': deleted,
     };
   }
 
@@ -107,12 +81,8 @@ class User extends _i1.TableRow {
       'uid': uid,
       'name': name,
       'email': email,
-      'phone': phone,
-      'image': image,
-      'photourl': photourl,
-      'last_seen': last_seen,
+      'photoUrl': photoUrl,
       'status': status,
-      'deleted': deleted,
     };
   }
 
@@ -134,23 +104,11 @@ class User extends _i1.TableRow {
       case 'email':
         email = value;
         return;
-      case 'phone':
-        phone = value;
-        return;
-      case 'image':
-        image = value;
-        return;
-      case 'photourl':
-        photourl = value;
-        return;
-      case 'last_seen':
-        last_seen = value;
+      case 'photoUrl':
+        photoUrl = value;
         return;
       case 'status':
         status = value;
-        return;
-      case 'deleted':
-        deleted = value;
         return;
       default:
         throw UnimplementedError();
@@ -282,17 +240,9 @@ class UserTable extends _i1.Table {
 
   final email = _i1.ColumnString('email');
 
-  final phone = _i1.ColumnInt('phone');
-
-  final image = _i1.ColumnInt('image');
-
-  final photourl = _i1.ColumnString('photourl');
-
-  final last_seen = _i1.ColumnDateTime('last_seen');
+  final photoUrl = _i1.ColumnString('photoUrl');
 
   final status = _i1.ColumnBool('status');
-
-  final deleted = _i1.ColumnBool('deleted');
 
   @override
   List<_i1.Column> get columns => [
@@ -300,12 +250,8 @@ class UserTable extends _i1.Table {
         uid,
         name,
         email,
-        phone,
-        image,
-        photourl,
-        last_seen,
+        photoUrl,
         status,
-        deleted,
       ];
 }
 

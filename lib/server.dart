@@ -1,5 +1,4 @@
 import 'package:serverpod/serverpod.dart';
-import 'package:test_server/src/web/routes/root.dart';
 import 'src/generated/protocol.dart';
 import 'src/generated/endpoints.dart';
 
@@ -13,10 +12,6 @@ void run(List<String> args) async {
     Protocol(),
     Endpoints(),
   );
-
-  // Setup a default page at the web root.
-  pod.webServer.addRoute(RouteRoot(), '/');
-  pod.webServer.addRoute(RouteRoot(), '/index.html');
 
   await pod.start();
 }

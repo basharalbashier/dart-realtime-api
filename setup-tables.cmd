@@ -1,8 +1,8 @@
 @echo off
 
 @REM Start docker
-echo Compiling dart and  Starting docker
-dart compile exe bin\main.dart -o .\bin\main &&  docker compose up --build --detach
+echo  Starting docker
+docker compose up --build --detach
 
 :LOOP
 netstat -o -n -a | >nul findstr "8090" && (

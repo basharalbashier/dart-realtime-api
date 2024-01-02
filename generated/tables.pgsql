@@ -42,12 +42,8 @@ CREATE TABLE "users" (
   "uid" text,
   "name" text NOT NULL,
   "email" text,
-  "phone" integer,
-  "image" integer,
-  "photourl" text,
-  "last_seen" timestamp without time zone,
-  "status" boolean,
-  "deleted" boolean
+  "photoUrl" text,
+  "status" boolean
 );
 
 ALTER TABLE ONLY "users"
